@@ -42,18 +42,21 @@ public class Planet{
     }
     public double calcNetForceExertedByX(Planet[] p){
     	double netFx = 0.0;
-    	for (int i=0;i<p.length;i=i+1){
-    		netFx=netFx+calcForceExertedByX(p[i]);
+			for (Planet pl: p) {
+            if (!this.equals(pl))
+                netFx += calcForceExertedByX(pl);
     	}
     	return netFx;
     }
     public double calcNetForceExertedByY(Planet[] p){
     	double netFy = 0.0;
-    	for (int i=0;i<p.length;i=i+1){
-    		netFy=netFy+calcForceExertedByY(p[i]);
-    	}
+			for (Planet pl: p) {
+            if (!this.equals(pl))
+                netFy += calcForceExertedByY(pl);}
     	return netFy;
-    }
+		}
+	
+
     public void update(double dt, double fX, double fY){
     	double aNetX= fX/this.mass;
     	double aNetY= fY/this.mass;
